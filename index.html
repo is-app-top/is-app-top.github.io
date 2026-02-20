@@ -4,334 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>is-app.top - Free Subdomain Service</title>
+    <link rel="icon" type="image/png" href="./src/favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#3b82f6',
-                        dark: '#0a192f',
-                        darker: '#020c1b',
-                        light: '#ccd6f6',
-                        slate: '#8892b0',
+                        brand: '#336fd0', 
+                        bgDark: '#0b182f', 
+                        cardDark: '#0e1d3a',
+                        borderDark: '#1e2d4d',
+                        textMain: '#ccd6f6',
+                        textMuted: '#8892b0',
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0a192f;
+            background-color: #0b182f;
             color: #ccd6f6;
+            font-family: 'JetBrains Mono', monospace;
         }
-        .glass {
-            background: rgba(10, 25, 47, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(59, 130, 246, 0.1);
+        .banner-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 1.5rem auto; 
+            border: 2px solid #336fd0;
+            background-color: #0b182f;
+            box-shadow: 0 0 25px rgba(51, 111, 208, 0.15);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .gradient-text {
-            background: linear-gradient(to right, #3b82f6, #60a5fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .banner-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1000 / 300;
+            object-fit: cover;
+            display: block;
         }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        .input-terminal {
+            background: #0e1d3a;
+            border: 1px solid #1e2d4d;
+            outline: none;
         }
-        ::-webkit-scrollbar-track {
-            background: #0a192f;
+        .input-terminal:focus {
+            border-color: #336fd0;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #3b82f6;
-            border-radius: 4px;
+        .link-brand {
+            color: #336fd0;
+            text-decoration: none;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #2563eb;
+        .link-brand:hover {
+            text-decoration: underline;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #1e2d4d;
+            margin: 1.5rem 0;
         }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col">
-
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <i class="fas fa-globe text-primary text-2xl"></i>
-                    <span class="font-bold text-xl text-white tracking-wide">is-app<span class="text-primary">.top</span></span>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#features" class="hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">Features</a>
-                        <a href="#how-it-works" class="hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">How it works</a>
-                        <a href="#faq" class="hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors">FAQ</a>
-                        <a href="https://github.com/is-app-top/register" class="bg-primary hover:bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-medium transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30">Get Started</a>
-                    </div>
-                </div>
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-btn">
-                        <span class="sr-only">Open main menu</span>
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
+<body class="p-4 sm:p-6 max-w-4xl mx-auto"> 
+    <header class="mb-8"> 
+        <div class="banner-container">
+            <img src="./src/banner.png" alt=".is-app.top" class="banner-image">
         </div>
-
-        <!-- Mobile menu -->
-        <div class="md:hidden hidden glass" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-800">
-                <a href="#features" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Features</a>
-                <a href="#how-it-works" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">How it works</a>
-                <a href="#faq" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">FAQ</a>
-                <a href="https://github.com/is-app-top/register" class="bg-primary text-white block px-3 py-2 rounded-md text-base font-medium mt-4 text-center">Get Started</a>
-            </div>
+        
+        <p class="text-lg font-bold">Free, forever, and yours. Grab your '.is-app.top' today.</p>
+        <div class="border-l-4 border-brand bg-cardDark p-3 mt-3 text-sm"> To register your own subdomain, visit the 
+            <a href="https://github.com/is-app-top/register" class="link-brand font-bold">is-app-top/register</a> 
+            repository on GitHub and follow the provided instructions.
         </div>
-    </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="relative pt-20 pb-10 lg:pt-48 lg:pb-32 overflow-hidden">
-        <!-- Background Elements -->
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
-            <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[100px]"></div>
-            <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-600/20 rounded-full blur-[100px]"></div>
+    <section class="mb-8"> 
+        <h2 class="text-brand font-bold text-xl mb-3">Check Subdomain Availability</h2>
+        <div class="relative">
+            <input type="text" id="domain-input" placeholder="e.g. william" 
+                   onkeypress="handleKeyPress(event)"
+                   class="w-full input-terminal p-3 rounded text-textMain placeholder-textMuted text-lg">
         </div>
+        <div id="search-result" class="mt-2 h-6 text-sm font-medium transition-all duration-300 opacity-0"></div>
+    </section>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-2xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight animate-fade-in-up">
-                Your Perfect <span class="gradient-text">Subdomain</span><br>Is Waiting For You
-            </h1>
-            <p class="mt-3 sm:mt-4 max-w-2xl mx-auto text-base sm:text-xl text-slate mb-6 sm:mb-10 animate-fade-in-up delay-100">
-                Get a short, memorable, and professional <span class="text-primary font-mono">yourname.is-app.top</span> domain for your projects, completely free.
-            </p>
+    <hr>
 
-            <!-- Domain Search -->
-            <div class="max-w-xl mx-auto relative group animate-fade-in-up delay-200">
-                <div class="absolute -inset-1 bg-gradient-to-r from-primary to-purple-600 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-200"></div>
-                <div class="relative flex items-center bg-darker rounded-lg p-1 sm:p-2 border border-gray-700 shadow-2xl">
-                    <input type="text" id="domain-input" placeholder="project-name" class="flex-grow bg-transparent text-white px-3 py-2 sm:px-4 sm:py-3 outline-none placeholder-slate font-mono text-sm sm:text-lg w-full min-w-0" onkeypress="handleKeyPress(event)">
-                    <span class="text-slate px-2 font-mono hidden sm:block">.is-app.top</span>
-                    <button onclick="checkDomain()" class="bg-primary hover:bg-blue-600 text-white px-3 py-1.5 sm:px-6 sm:py-3 rounded-md font-semibold transition-all transform hover:scale-105 ml-1 sm:ml-2 flex items-center gap-2 text-xs sm:text-base whitespace-nowrap">
-                        <span>Check</span>
-                        <i class="fas fa-arrow-right text-xs sm:text-sm"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <div id="search-result" class="mt-3 sm:mt-6 h-6 sm:h-8 text-sm sm:text-lg font-medium transition-all duration-300 opacity-0"></div>
+    <section class="mb-8">
+        <h2 class="text-brand font-bold text-xl mb-3">Important Links</h2>
+        <ul class="space-y-1 list-disc list-inside text-brand"> 
+            <li><a href="https://github.com/is-app-top/register#readme" class="link-brand">Documentation</a></li>
+            <li><a href="./tos.html" class="link-brand">Terms of Service</a></li>
+            <li><a href="https://github.com/is-app-top/register" class="link-brand">GitHub</a></li>
+            <li><a href="mailto:contact@is-app.top" class="link-brand">Support Email</a></li>
+        </ul>
+    </section>
 
-            <div class="mt-6 sm:mt-12 flex flex-wrap justify-center gap-3 sm:gap-8 text-slate text-xs sm:text-sm animate-fade-in-up delay-300">
-                <div class="flex items-center gap-2">
-                    <i class="fas fa-check-circle text-primary"></i> Free Forever
-                </div>
-                <div class="flex items-center gap-2">
-                    <i class="fas fa-bolt text-primary"></i> Instant Setup
-                </div>
-                <div class="flex items-center gap-2">
-                    <i class="fas fa-shield-alt text-primary"></i> SSL Included
-                </div>
-            </div>
+    <hr>
+
+    <section class="mb-8">
+        <h2 class="text-brand font-bold text-xl mb-3">Report Abuse</h2>
+        <div class="border-l-2 border-brand/50 pl-4 py-1 text-sm">
+            If you suspect that a subdomain is abusing the service, please 
+            <a href="https://github.com/is-app-top/register/issues" class="link-brand">report it here</a>.
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="py-10 md:py-20 bg-darker/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-8 md:mb-16">
-                <h2 class="text-xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">Why Choose <span class="text-primary">is-app.top</span>?</h2>
-                <p class="text-slate max-w-2xl mx-auto text-sm sm:text-base">We provide the best tools for developers to showcase their work with a professional touch.</p>
-            </div>
+    <hr>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
-                <!-- Feature 1 -->
-                <div class="bg-dark p-5 md:p-8 rounded-xl border border-gray-800 hover:border-primary/50 transition-all hover:-translate-y-2 group">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-primary/20 transition-colors">
-                        <i class="fas fa-code text-primary text-lg sm:text-xl"></i>
-                    </div>
-                    <h3 class="text-base sm:text-xl font-bold text-white mb-2 sm:mb-3">Developer Friendly</h3>
-                    <p class="text-slate text-sm sm:text-base">Designed for developers. Perfect for portfolios, demos, APIs, and hobby projects.</p>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="bg-dark p-5 md:p-8 rounded-xl border border-gray-800 hover:border-primary/50 transition-all hover:-translate-y-2 group">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-primary/20 transition-colors">
-                        <i class="fas fa-rocket text-primary text-lg sm:text-xl"></i>
-                    </div>
-                    <h3 class="text-base sm:text-xl font-bold text-white mb-2 sm:mb-3">High Performance</h3>
-                    <p class="text-slate text-sm sm:text-base">Our DNS infrastructure is optimized for speed and reliability worldwide.</p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="bg-dark p-5 md:p-8 rounded-xl border border-gray-800 hover:border-primary/50 transition-all hover:-translate-y-2 group">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-primary/20 transition-colors">
-                        <i class="fas fa-lock text-primary text-lg sm:text-xl"></i>
-                    </div>
-                    <h3 class="text-base sm:text-xl font-bold text-white mb-2 sm:mb-3">Secure & Private</h3>
-                    <p class="text-slate text-sm sm:text-base">We respect your privacy. No ads, no tracking, just pure DNS services.</p>
-                </div>
-            </div>
+    <section class="mb-12"> 
+        <h2 class="text-brand font-bold text-xl mb-3">Donations</h2>
+        <div class="border-l-2 border-brand/50 pl-4 py-1 text-sm leading-relaxed">
+            This project is a free service for developers and will stay that way.
+            Please consider <a href="#" class="link-brand">donating</a> to help us keep this service running forever!
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section id="how-it-works" class="py-10 md:py-20 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-16 items-center">
-                <div>
-                    <h2 class="text-xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">Get Started in <span class="text-primary">3 Simple Steps</span></h2>
-                    <div class="space-y-4 md:space-y-8">
-                        <div class="flex gap-3 sm:gap-4">
-                            <div class="flex-shrink-0 w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm sm:text-lg shadow-lg shadow-blue-500/30">1</div>
-                            <div>
-                                <h3 class="text-base sm:text-xl font-semibold text-white mb-0.5 sm:mb-2">Check Availability</h3>
-                                <p class="text-slate text-sm sm:text-base">Enter your desired subdomain name in the search bar to see if it's available.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-3 sm:gap-4">
-                            <div class="flex-shrink-0 w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-darker border border-primary text-primary flex items-center justify-center font-bold text-sm sm:text-lg">2</div>
-                            <div>
-                                <h3 class="text-base sm:text-xl font-semibold text-white mb-0.5 sm:mb-2">Register via GitHub</h3>
-                                <p class="text-slate text-sm sm:text-base">Fork the repository and create a <code class="text-primary bg-darker px-1 rounded text-xs sm:text-sm">{name}.is-app.top.json</code> file in the <code class="text-primary bg-darker px-1 rounded text-xs sm:text-sm">domains/</code> folder.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-3 sm:gap-4">
-                            <div class="flex-shrink-0 w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-darker border border-primary text-primary flex items-center justify-center font-bold text-sm sm:text-lg">3</div>
-                            <div>
-                                <h3 class="text-base sm:text-xl font-semibold text-white mb-0.5 sm:mb-2">Configure DNS</h3>
-                                <p class="text-slate text-sm sm:text-base">Point your subdomain to your server or hosting provider (Vercel, Netlify, etc.).</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-6 md:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
-                        <a href="https://github.com/is-app-top/register" class="inline-flex items-center justify-center text-primary font-semibold hover:text-blue-400 transition-colors group text-sm sm:text-base">
-                            Read Documentation <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                        </a>
-                        <a href="https://github.com/is-app-top/register" class="inline-flex items-center justify-center text-slate hover:text-white transition-colors gap-2 text-sm sm:text-base">
-                            <i class="fab fa-github text-lg sm:text-xl"></i> View on GitHub
-                        </a>
-                    </div>
-                </div>
-                <div class="relative mt-6 lg:mt-0">
-                    <div class="absolute -inset-4 bg-gradient-to-r from-primary to-purple-600 rounded-xl blur opacity-20"></div>
-                    <div class="bg-darker rounded-xl border border-gray-700 p-3 sm:p-5 relative shadow-2xl">
-                        <!-- Code Mockup -->
-                        <div class="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3">
-                            <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
-                            <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
-                        </div>
-                        <div class="font-mono text-[10px] sm:text-sm text-slate overflow-x-auto whitespace-pre leading-tight">
-                            <p class="text-gray-400">// domains/my-project.is-app.top.json</p>
-                            <p class="mt-1">{</p>
-                            <p class="pl-4"><span class="text-blue-400">"owner"</span>: {</p>
-                            <p class="pl-8"><span class="text-blue-400">"username"</span>: <span class="text-green-400">"your-github-username"</span>,</p>
-                            <p class="pl-8"><span class="text-blue-400">"email"</span>: <span class="text-green-400">"your@email.com"</span></p>
-                            <p class="pl-4">},</p>
-                            <p class="pl-4"><span class="text-blue-400">"record"</span>: {</p>
-                            <p class="pl-8"><span class="text-blue-400">"CNAME"</span>: <span class="text-green-400">"your-site.vercel.app"</span></p>
-                            <p class="pl-4">}</p>
-                            <p>}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <hr>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="py-10 md:py-20 bg-darker/30">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-xl sm:text-3xl font-bold text-white text-center mb-6 md:mb-12">Frequently Asked Questions</h2>
-            <div class="space-y-3 sm:space-y-6">
-                <!-- FAQ 1 -->
-                <div class="bg-dark border border-gray-800 rounded-lg overflow-hidden hover:border-primary/30 transition-all">
-                    <button class="w-full px-3 py-2.5 sm:px-6 sm:py-4 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
-                        <span class="text-sm sm:text-lg font-medium text-white pr-4">Is this service really free?</span>
-                        <i class="fas fa-chevron-down text-slate transition-transform duration-300 flex-shrink-0 text-sm"></i>
-                    </button>
-                    <div class="hidden px-3 pb-2.5 sm:px-6 sm:pb-4 text-slate border-t border-gray-800/50 pt-2.5 sm:pt-4 text-xs sm:text-base">
-                        Yes! <span class="text-primary">is-app.top</span> is completely free for everyone. We believe in supporting the developer community by providing accessible tools for projects of all sizes.
-                    </div>
-                </div>
-
-                <!-- FAQ 2 -->
-                <div class="bg-dark border border-gray-800 rounded-lg overflow-hidden hover:border-primary/30 transition-all">
-                    <button class="w-full px-3 py-2.5 sm:px-6 sm:py-4 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
-                        <span class="text-sm sm:text-lg font-medium text-white pr-4">How do I register a domain?</span>
-                        <i class="fas fa-chevron-down text-slate transition-transform duration-300 flex-shrink-0 text-sm"></i>
-                    </button>
-                    <div class="hidden px-3 pb-2.5 sm:px-6 sm:pb-4 text-slate border-t border-gray-800/50 pt-2.5 sm:pt-4 text-xs sm:text-base">
-                        Registration is done via GitHub Pull Request. Simply fork our repository, add a JSON file with your desired subdomain name in the <code class="text-primary bg-darker px-1 rounded">domains/</code> directory, and submit a PR. Once merged, your domain is active!
-                    </div>
-                </div>
-
-                <!-- FAQ 3 -->
-                <div class="bg-dark border border-gray-800 rounded-lg overflow-hidden hover:border-primary/30 transition-all">
-                    <button class="w-full px-3 py-2.5 sm:px-6 sm:py-4 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
-                        <span class="text-sm sm:text-lg font-medium text-white pr-4">What record types are supported?</span>
-                        <i class="fas fa-chevron-down text-slate transition-transform duration-300 flex-shrink-0 text-sm"></i>
-                    </button>
-                    <div class="hidden px-3 pb-2.5 sm:px-6 sm:pb-4 text-slate border-t border-gray-800/50 pt-2.5 sm:pt-4 text-xs sm:text-base">
-                        We currently support CNAME, A, AAAA, MX, and TXT records. This allows you to point your subdomain to any hosting provider, server IP, or even set up email verification.
-                    </div>
-                </div>
-
-                <!-- FAQ 4 -->
-                <div class="bg-dark border border-gray-800 rounded-lg overflow-hidden hover:border-primary/30 transition-all">
-                    <button class="w-full px-3 py-2.5 sm:px-6 sm:py-4 text-left flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
-                        <span class="text-sm sm:text-lg font-medium text-white pr-4">How can I contact support?</span>
-                        <i class="fas fa-chevron-down text-slate transition-transform duration-300 flex-shrink-0 text-sm"></i>
-                    </button>
-                    <div class="hidden px-3 pb-2.5 sm:px-6 sm:pb-4 text-slate border-t border-gray-800/50 pt-2.5 sm:pt-4 text-xs sm:text-base">
-                        If you have any questions or need assistance, you can open an issue on our GitHub repository or email us directly at <a href="mailto:contact@is-app.top" class="text-primary hover:underline">contact@is-app.top</a>.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-darker border-t border-gray-800 py-6 md:py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-3 md:gap-4">
-                <div class="text-center md:text-left">
-                    <span class="font-bold text-base sm:text-xl text-white tracking-wide">is-app<span class="text-primary">.top</span></span>
-                    <p class="text-slate text-xs sm:text-sm mt-1 sm:mt-2">© 2026 is-app.top. All rights reserved.</p>
-                </div>
-                <div class="flex space-x-4 sm:space-x-6">
-                    <a href="https://github.com/is-app-top/register" class="text-slate hover:text-primary transition-colors"><i class="fab fa-github text-lg sm:text-xl"></i></a>
-                    <a href="mailto:contact@is-app.top" class="text-slate hover:text-primary transition-colors"><i class="fas fa-envelope text-lg sm:text-xl"></i></a>
-                </div>
-            </div>
-        </div>
+    <footer class="text-xs text-textMuted pb-8"> 
+        <p class="mb-1" id="copyright-text">© 2024 is-app.top - All Rights Reserved.</p>
+        <p>A project by <a href="https://github.com/williebenner" class="link-brand">Willie Benner</a>.</p>
     </footer>
 
     <script>
-        // Navbar toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
+        const currentYear = new Date().getFullYear();
+        const copyrightElement = document.getElementById('copyright-text');
+        if (currentYear > 2024) {
+            copyrightElement.innerHTML = `© 2024 - ${currentYear} is-app.top - All Rights Reserved.`;
+        }
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // Sticky Navbar Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 10) {
-                navbar.classList.add('shadow-lg');
-            } else {
-                navbar.classList.remove('shadow-lg');
-            }
-        });
-
-        // Domain Check Logic
         function handleKeyPress(event) {
             if (event.key === 'Enter') {
                 checkDomain();
@@ -344,24 +154,17 @@
             const domain = input.value.trim().toLowerCase();
 
             if (!domain) {
-                showResult('Please enter a domain name.', 'text-red-400');
+                showResult('Please enter a name.', 'text-red-400');
                 return;
             }
 
-            if (!/^[a-z0-9-]+$/.test(domain)) {
-                showResult('Only letters, numbers, and hyphens are allowed.', 'text-red-400');
-                return;
-            }
-
-            // Show loading state
             resultDiv.style.opacity = '1';
-            resultDiv.className = 'mt-6 h-8 text-lg font-medium transition-all duration-300 text-blue-400';
-            resultDiv.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking availability...';
+            resultDiv.className = 'mt-2 text-brand font-bold';
+            resultDiv.innerHTML = '> checking availability...';
             
             const message = await checkDomainAvailability(domain);
             
-            // Determine color based on message content
-            let colorClass = 'text-slate';
+            let colorClass = 'text-textMuted';
             if (message.includes('✅')) colorClass = 'text-green-400';
             else if (message.includes('❌')) colorClass = 'text-red-400';
             else if (message.includes('⚠️')) colorClass = 'text-yellow-400';
@@ -370,32 +173,21 @@
         }
 
         async function checkDomainAvailability(name) { 
-            // Fetch the raw list from GitHub
             const url = 'https://raw.githubusercontent.com/is-app-top/register/refs/heads/main/lists.txt';
-            
             try { 
                 const response = await fetch(url);
-                
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                
+                if (!response.ok) throw new Error();
                 const text = await response.text();
                 const lines = text.split('\n');
                 let status = null;
 
-                // Check if domain exists in the list
-                // Format expected: domain: "status"
                 for (const line of lines) {
                     const trimmedLine = line.trim();
                     if (!trimmedLine) continue;
-
-                    // Parse line: key: "value"
                     const parts = trimmedLine.split(':');
                     if (parts.length >= 2) {
                         const key = parts[0].trim().replace(/['"]/g, '');
                         const value = parts[1].trim().replace(/['"]/g, '').replace(/,/g, '');
-                        
                         if (key.toLowerCase() === name.toLowerCase()) {
                             status = value;
                             break;
@@ -403,60 +195,19 @@
                     }
                 }
 
-                if (status === 'active') {
-                    return "❌ Unavailable - This domain is already active.";
-                } else if (status === 'pending') {
-                    return "❌ Unavailable - This domain is pending registration.";
-                } else {
-                    return "✅ Available - You can register this domain!";
-                }
+                if (status === 'active') return "❌ Unavailable - already active.";
+                if (status === 'pending') return "❌ Unavailable - pending registration.";
+                return "✅ Available - You can register this domain!";
             } catch (error) { 
-                console.error('Error fetching list:', error);
-                return "⚠️ Error: Cannot connect to registration server."; 
+                return "⚠️ Error connecting to server.";
             } 
         }
 
         function showResult(message, colorClass) {
             const resultDiv = document.getElementById('search-result');
-            resultDiv.className = `mt-6 h-8 text-lg font-medium transition-all duration-300 ${colorClass}`;
+            resultDiv.className = `mt-2 text-sm font-bold ${colorClass}`;
             resultDiv.innerHTML = message;
             resultDiv.style.opacity = '1';
-        }
-
-        // Simple animation on scroll
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('opacity-100', 'translate-y-0');
-                    entry.target.classList.remove('opacity-0', 'translate-y-10');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach((el) => {
-            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
-            observer.observe(el);
-        });
-
-        // FAQ Toggle Logic
-        function toggleFaq(button) {
-            const content = button.nextElementSibling;
-            const icon = button.querySelector('i');
-            
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
-            } else {
-                content.classList.add('hidden');
-                icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
-            }
         }
     </script>
 </body>
