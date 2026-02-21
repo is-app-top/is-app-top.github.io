@@ -148,7 +148,6 @@
     </footer>
 
     <script>
-        // Tự động cập nhật năm trong Footer: 2024 - Hiện tại
         const currentYear = new Date().getFullYear();
         const copyrightElement = document.getElementById('copyright-text');
         if (currentYear > 2024) {
@@ -158,13 +157,11 @@
         (function() {
             const path = window.location.pathname;
             
-            // 1. Remove .html extension
             if (path.endsWith('.html')) {
                 const cleanPath = path.replace(/\.html$/, '');
                 window.history.replaceState(null, '', cleanPath + window.location.search);
             }
             
-            // 2. Remove /index or /index.html
             if (path.endsWith('/index') || path === '/index.html') {
                 const cleanPath = path.replace(/\/index$/, '') || '/';
                 window.history.replaceState(null, '', cleanPath + window.location.search);
