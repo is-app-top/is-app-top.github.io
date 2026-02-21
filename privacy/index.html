@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - is-app.top</title>
+    <link rel="icon" type="image/png" href="../src/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#336fd0', 
+                        bgDark: '#0b182f', 
+                        cardDark: '#0e1d3a',
+                        borderDark: '#1e2d4d',
+                        textMain: '#ccd6f6',
+                        textMuted: '#8892b0',
+                    },
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0b182f;
+            color: #ccd6f6;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .banner-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 1.5rem auto;
+            border: 2px solid #336fd0;
+            background-color: #0b182f;
+            box-shadow: 0 0 25px rgba(51, 111, 208, 0.15);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .banner-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1000 / 300;
+            object-fit: cover;
+            display: block;
+        }
+        .link-brand {
+            color: #336fd0;
+            text-decoration: none;
+        }
+        .link-brand:hover {
+            text-decoration: underline;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #1e2d4d;
+            margin: 1.5rem 0;
+        }
+        .content-section h2 {
+            color: #336fd0;
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            margin-top: 2rem;
+        }
+        .content-section p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        .content-section ul {
+            list-style-type: disc;
+            list-style-position: inside;
+            margin-bottom: 1rem;
+            color: #8892b0;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 max-w-4xl mx-auto">
+
+    <header class="mb-8">
+        <div class="banner-container">
+            <a href="/">
+                <img src="../src/banner.png" alt=".is-app.top" class="banner-image">
+            </a>
+        </div>
+        <h1 class="text-2xl font-bold text-brand">Privacy Policy</h1>
+        <p class="text-sm text-textMuted">Last Updated: February 2026</p>
+    </header>
+
+    <main class="content-section">
+        <p>At <strong>is-app.top</strong>, we are committed to transparency. Because this is an open-source project powered by GitHub, your data is handled differently than traditional services.</p>
+
+        <hr>
+
+        <h2>1. Data Collection</h2>
+        <p>We do not require account registration on our website. However, data is collected when you interact with our GitHub repository:</p>
+        <ul>
+            <li>GitHub Username: To identify the owner of the subdomain.</li>
+            <li>DNS Records: Technical data (IP addresses, CNAME targets) provided in your Pull Request.</li>
+            <li>Public Profile Info: Any information you have set to "Public" on GitHub.</li>
+        </ul>
+
+        <h2>2. Public Registry Disclosure</h2>
+        <p><strong>Warning:</strong> This service operates as a Public Registry. When you submit a Pull Request to register a subdomain:</p>
+        <ul>
+            <li>Your technical records become <strong>permanently public</strong> on our GitHub repository.</li>
+            <li>Commit history will reflect all changes made to your records.</li>
+        </ul>
+
+        <h2>3. Data Usage</h2>
+        <p>Your data is used solely to:</p>
+        <ul>
+            <li>Operate and maintain the DNS infrastructure for your subdomain.</li>
+            <li>Communicate regarding technical issues or Terms of Service violations.</li>
+            <li>Prevent abuse, phishing, or malicious activities.</li>
+        </ul>
+
+        <h2>4. Third-Party Services</h2>
+        <p>We utilize the following infrastructure:</p>
+        <ul>
+            <li><strong>GitHub:</strong> For storage and management of domain records.</li>
+            <li><strong>Cloudflare:</strong> For DNS resolution and infrastructure security.</li>
+        </ul>
+        <p>These services may collect technical logs (like IP addresses) independently under their own privacy policies.</p>
+
+        <h2>5. Your Rights</h2>
+        <p>You may update or request the removal of your subdomain at any time by opening a Pull Request. Note that while current records can be deleted, historical data may persist in the Git commit history.</p>
+
+        <div class="mt-5 mb-10 text-center">
+            <a href="/" class="link-brand font-bold">← Back to Home</a>
+        </div>
+    </main>
+
+    <hr>
+
+    <footer class="text-xs text-textMuted pb-8 mt-4">
+        <p class="mb-1" id="copyright-text">© 2024 is-app.top - All Rights Reserved.</p>
+        <a href="/" class="link-brand">Home</a>
+        <a href="/tos" class="link-brand">Terms of Service</a>
+    </footer>
+
+    <script>
+        // Tự động cập nhật năm trong Footer: 2024 - Hiện tại
+        const currentYear = new Date().getFullYear();
+        const copyrightElement = document.getElementById('copyright-text');
+        if (currentYear > 2024) {
+            copyrightElement.innerHTML = `© 2024 - ${currentYear} is-app.top - All Rights Reserved.`;
+        }
+
+        (function() {
+            const path = window.location.pathname;
+            
+            // 1. Remove .html extension
+            if (path.endsWith('.html')) {
+                const cleanPath = path.replace(/\.html$/, '');
+                window.history.replaceState(null, '', cleanPath + window.location.search);
+            }
+            
+            // 2. Remove /index or /index.html
+            if (path.endsWith('/index') || path === '/index.html') {
+                const cleanPath = path.replace(/\/index$/, '') || '/';
+                window.history.replaceState(null, '', cleanPath + window.location.search);
+            }
+        })();
+    </script>
+</body>
+</html>
