@@ -98,19 +98,19 @@
 
     <hr>
 
-    <section class="mb-8">
+    <section class="mb-8 mt-2">
         <h2 class="text-brand font-bold text-xl mb-3">Important Links</h2>
         <ul class="space-y-1 list-disc list-inside text-brand"> 
             <li><a href="https://github.com/is-app-top/register#readme" class="link-brand">Documentation</a></li>
-            <li><a href="./tos.html" class="link-brand">Terms of Service</a></li>
-            <li><a href="https://github.com/is-app-top" class="link-brand">GitHub</a></li>
+            <li><a href="/tos" class="link-brand">Terms of Service</a></li>
+            <li><a href="https://github.com/is-app-top/register" class="link-brand">GitHub</a></li>
             <li><a href="mailto:contact@is-app.top" class="link-brand">Support Email</a></li>
         </ul>
     </section>
 
     <hr>
 
-    <section class="mb-8">
+    <section class="mb-8 mt-2">
         <h2 class="text-brand font-bold text-xl mb-3">Report Abuse</h2>
         <div class="border-l-2 border-brand/50 pl-4 py-1 text-sm">
             If you suspect that a subdomain is abusing the service, please 
@@ -120,17 +120,17 @@
 
     <hr>
 
-    <section class="mb-12"> 
+    <section class="mb-8 mt-2"> 
         <h2 class="text-brand font-bold text-xl mb-3">Donations</h2>
         <div class="border-l-2 border-brand/50 pl-4 py-1 text-sm leading-relaxed">
             This project is a free service for developers and will stay that way.
-            Please consider <a href="https://ko-fi.com/isapptop" class="link-brand">donating</a> to help us keep this service running forever!
+            Please consider <a href="#" class="link-brand">donating</a> to help us keep this service running forever!
         </div>
     </section>
 
     <hr>
 
-    <footer class="text-xs text-textMuted pb-8"> 
+    <footer class="text-xs text-textMuted pb-8 mt-2"> 
         <p class="mb-1" id="copyright-text">© 2024 is-app.top - All Rights Reserved.</p>
         <p>A project by <a href="https://github.com/williebenner" class="link-brand">Willie Benner</a>.</p>
     </footer>
@@ -209,8 +209,20 @@
             resultDiv.innerHTML = message;
             resultDiv.style.opacity = '1';
         }
+
+        (function() {
+            const path = window.location.pathname;
+            
+            if (path.endsWith('.html')) {
+                const cleanPath = path.replace(/\.html$/, '');
+                window.history.replaceState(null, '', cleanPath + window.location.search);
+            }
+            
+            if (path.endsWith('/index') || path === '/index.html') {
+                const cleanPath = path.replace(/\/index$/, '') || '/';
+                window.history.replaceState(null, '', cleanPath + window.location.search);
+            }
+        })();
     </script>
 </body>
 </html>
-
-
