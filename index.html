@@ -124,7 +124,7 @@
         <h2 class="text-brand font-bold text-xl mb-3">Donations</h2>
         <div class="border-l-2 border-brand/50 pl-4 py-1 text-sm leading-relaxed">
             This project is a free service for developers and will stay that way.
-            Please consider <a href="#" class="link-brand">donating</a> to help us keep this service running forever!
+            Please consider <a href="https://ko-fi.com/isapptop" class="link-brand">donating</a> to help us keep this service running forever!
         </div>
     </section>
 
@@ -213,11 +213,13 @@
         (function() {
             const path = window.location.pathname;
             
+            // 1. Remove .html extension
             if (path.endsWith('.html')) {
                 const cleanPath = path.replace(/\.html$/, '');
                 window.history.replaceState(null, '', cleanPath + window.location.search);
             }
             
+            // 2. Remove /index or /index.html
             if (path.endsWith('/index') || path === '/index.html') {
                 const cleanPath = path.replace(/\/index$/, '') || '/';
                 window.history.replaceState(null, '', cleanPath + window.location.search);
