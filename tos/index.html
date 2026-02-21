@@ -130,18 +130,18 @@
     </div>
 
     <div class="mt-10 mb-5 text-center">
-            <a href="index.html" class="link-brand font-bold">← Back to Home</a>
+            <a href="/" class="link-brand font-bold">← Back to Home</a>
         </div>
 
     <hr>
 
     <footer class="text-xs text-textMuted pb-8 mt-4">
         <p class="mb-1" id="copyright-text">© 2024 is-app.top - All Rights Reserved.</p>
-        <p>A project by <a href="https://github.com/williebenner" class="link-brand">Willie Benner</a>.</p>
+        <a href="/" class="link-brand">Home</a>
+        <a href="/tos" class="link-brand">Terms of Service</a>
     </footer>
 
     <script>
-        // Tự động cập nhật năm trong Footer: 2024 - Hiện tại
         const currentYear = new Date().getFullYear();
         const copyrightElement = document.getElementById('copyright-text');
         if (currentYear > 2024) {
@@ -151,13 +151,11 @@
         (function() {
             const path = window.location.pathname;
             
-            // 1. Remove .html extension
             if (path.endsWith('.html')) {
                 const cleanPath = path.replace(/\.html$/, '');
                 window.history.replaceState(null, '', cleanPath + window.location.search);
             }
             
-            // 2. Remove /index or /index.html
             if (path.endsWith('/index') || path === '/index.html') {
                 const cleanPath = path.replace(/\/index$/, '') || '/';
                 window.history.replaceState(null, '', cleanPath + window.location.search);
